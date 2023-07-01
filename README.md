@@ -20,8 +20,8 @@ nvm use 16.20.0
 ```
 ### Clone the repo
 ```bash
-git clone https://github.com/CriSFV/podcast_finder.git
-cd podcast_finder
+git clone https://github.com/CriSFV/podcast.git
+cd podcast
 ```
 ### Dependencies
 
