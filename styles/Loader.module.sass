@@ -1,0 +1,15 @@
+@import './variables.module.sass'
+
+.loading 
+  display: inline-block
+  width: 20px
+  height: 20px
+  border: 3px solid $textColorPpal
+  border-radius: 50%
+  border-top-color: #fff
+  animation: spin 1s ease-in-out infinite
+  -webkit-animation: spin 1s ease-in-out infinite
+
+@keyframes spin 
+  100%
+     -webkit-transform: rotate(360deg)
