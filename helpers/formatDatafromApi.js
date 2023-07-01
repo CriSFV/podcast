@@ -14,6 +14,7 @@ export const formatDataList = (data) => {
   
   export const formatPodcastDetail = (data) => {
     const contents = JSON.parse(data.contents);
+    console.log("🚀 ~ file: formatDatafromApi.js:17 ~ formatPodcastDetail ~ contents:", contents)
     const podcast = contents?.results?.map((episode) => {
       return {
         id_author:episode.collectionId.toString(),
