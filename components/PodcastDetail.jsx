@@ -7,26 +7,31 @@ import Layout from "./Layout";
 import { formatPodcastDetail } from "@/helpers/formatDatafromApi";
 import PodcastCard from "./PodcastCard";
 import useLocalStorage from "@/hooks/useLocalStorage";
+import { useLoader } from "../contexts/LoadingContext";
 
-const PodcastDetail = ({params}) => {
+const PodcastDetail = ({ params }) => {
   const [podcastToRender, setPodcastToRender] = useState([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const podcastId = router.query.id;
-  const[podcastList, setPodcastList] = useLocalStorage(`podcast_${podcastId}`, []);
+  const [podcastList, setPodcastList] = useLocalStorage(`podcast_${podcastId}`, [] );
+  const { setLoadingState } = useLoader();
 
   useEffect(() => {
     if (podcastList.length === 0) {
+      setLoadingState(true);
       setLoading(true);
       getPodcastDetail(podcastId).then((resp) => {
         const data = formatPodcastDetail(resp);
         setPodcastToRender(data);
         podcastId && setPodcastList(data);
         setLoading(false);
+        setLoadingState(false);
       });
     } else {
       setPodcastToRender(podcastList);
       setLoading(false);
+      setLoadingState(false);
     }
   }, [podcastId]);
 

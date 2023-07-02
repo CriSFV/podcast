@@ -1,27 +1,27 @@
-'use client'
-// import Layout from "../components/Layout";
-import { useEffect, useState } from "react";
+"use client";
+import { useEffect, useState, useContext } from "react";
 import getPodcasts from "../api/getPodcasts";
 import Home from "./Home";
 import Layout from "./Layout";
 import { formatDataList } from "../helpers/formatDatafromApi";
-import useLocalStorage from "@/hooks/useLocalStorage";
+import useLocalStorage from "../hooks/useLocalStorage";
+import { useLoader } from "../contexts/LoadingContext";
 
 function App() {
   const [data, setData] = useState([]);
   const [userSearch, setUserSearch] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [date, setDate, removeDate] = useLocalStorage('date', 0);
-  const [podcastData, setPodcastData, removePodcastData] = useLocalStorage('podcastData', []);
-  const [podcastSelected, setPodcastSelected, removePodcastSelected] = useLocalStorage('podcastSelected', []);
+  const [date, setDate, removeDate] = useLocalStorage("date", 0);
+  const [podcastData, setPodcastData, removePodcastData] = useLocalStorage("podcastData",[]);
+  const [podcastSelected, setPodcastSelected, removePodcastSelected] = useLocalStorage("podcastSelected", []);
+  const { setLoadingState } = useLoader();
 
   useEffect(() => {
     // check if more than one day has passed, if it's less than a day, get data from localStorage
 
     if (Date.now() - date >= 86400000) {
-      setIsLoading(true);
+      setLoadingState(true);
       getPodcasts().then((response) => {
-        setIsLoading(false);
+        setLoadingState(false);
         const dataFormatted = formatDataList(response);
         setData(dataFormatted);
         removeDate();
@@ -30,7 +30,7 @@ function App() {
         setPodcastData(dataFormatted);
       });
     } else {
-      setIsLoading(false);
+      setLoadingState(false);
       setData(podcastData);
     }
   }, []);
@@ -59,7 +59,7 @@ function App() {
         );
 
   return (
-    <Layout isLoading={isLoading}>
+    <Layout>
       <div className="ppal_container">
         <Home
           data={podcastFiltered}

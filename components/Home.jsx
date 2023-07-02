@@ -1,5 +1,4 @@
 import styles from "../styles/Home.module.sass";
-// import PropTypes from "prop-types";
 import List from "./List";
 
 const Home = (props) => {
@@ -37,7 +36,4 @@ const Home = (props) => {
     </>
   );
 };
-// Home.propTypes = {
-//   data: PropTypes.array.isRequired,
-// };
 export default Home;

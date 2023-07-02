@@ -36,16 +36,9 @@ const List = (props) => {
   };
   return (
     <section>
-      <ul className={styles.list}>
-        {printList()}
-      </ul>
+      <ul className={styles.list}>{printList()}</ul>
     </section>
   );
 };
-
-// List.propTypes = {
-//   data: PropTypes.array.isRequired,
-//   handleUserSelect: PropTypes.func,
-// };
 
 export default List;

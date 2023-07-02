@@ -2,13 +2,11 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/Layout.module.sass";
 import Loader from "./Loader";
+import { useLoader } from "../contexts/LoadingContext";
 
-export default function Layout({ children, title, description, isLoading }) {
-  const Loading = () => {
-    if (isLoading) {
-      return <Loader />;
-    }
-  };
+export default function Layout({ children, title, description }) {
+  const { loading } = useLoader();
+
   const HeadPage = () => {
     return (
       <Head>
@@ -25,7 +23,8 @@ export default function Layout({ children, title, description, isLoading }) {
     <div className={styles.ppal_container}>
       <HeadPage />
       <header>
-        <div className={styles.loader__container}>{Loading()}</div>
+        <div className={styles.loader__container}>{loading && <Loader />}</div>
+
         <nav>
           <Link href={"/"} className={styles.title}>
             Podcaster
