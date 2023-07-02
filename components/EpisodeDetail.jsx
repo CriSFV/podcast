@@ -1,23 +1,20 @@
 import PodcastCard from "./PodcastCard";
-import cache from "../api/store";
 import { useEffect, useState } from "react";
 import styles from "../styles/PodcastDetail.module.sass";
 import { useRouter } from "next/router";
 import sanitizeHtml from 'sanitize-html';
 import Layout from "./Layout";
+import useLocalStorage from "@/hooks/useLocalStorage";
 
 const EpisodeDetail = () => {
   const [episode, setEpisode] = useState({});
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const { id, trackId } = router.query;
+  const[podcastSelected] = useLocalStorage(`podcast_${id}`, []);
 
   useEffect(() => {
-    const episodeToRender = cache.get(`podcast_${id}`)
-      ? cache
-          .get(`podcast_${id}`)
-          .filter((x) => x.trackId === parseInt(trackId))
-      : "";
+    const episodeToRender = podcastSelected?.filter((x) => x.trackId === parseInt(trackId))
     setEpisode(episodeToRender[0]);
     setLoading(false);
   }, [id, trackId]);

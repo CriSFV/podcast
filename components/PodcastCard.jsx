@@ -1,17 +1,13 @@
 import PropTypes from "prop-types";
 import Link from "next/link";
 import styles from "../styles/PodcastDetail.module.sass";
-import { useState, useEffect } from "react";
-import cache from "../api/store";
 import { useRouter } from "next/router";
+import useLocalStorage from "@/hooks/useLocalStorage";
 
 const PodcastCard = () => {
-  const [podcast, setPodcast] = useState();
   const router = useRouter();
   const podcastId = router.query.id;
-  useEffect(() => {
-    setPodcast(cache.get("podcastSelected", null));
-  }, []);
+  const [podcast] = useLocalStorage('podcastSelected', []);
 
   return (
     podcast && (

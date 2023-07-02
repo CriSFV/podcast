@@ -1,29 +1,27 @@
 import styles from "../styles/PodcastDetail.module.sass";
-import cache from "../api/store";
-import PodcastCard from "./PodcastCard";
 import { useEffect, useState } from "react";
-import getPodcastDetail from "../api/getPodcastDetail";
-import Link from "next/link";
 import { useRouter } from "next/router";
+import Link from "next/link";
+import getPodcastDetail from "../api/getPodcastDetail";
 import Layout from "./Layout";
 import { formatPodcastDetail } from "@/helpers/formatDatafromApi";
+import PodcastCard from "./PodcastCard";
+import useLocalStorage from "@/hooks/useLocalStorage";
 
 const PodcastDetail = ({params}) => {
   const [podcastToRender, setPodcastToRender] = useState([]);
-  console.log("🚀 ~ file: PodcastDetail.jsx:13 ~ PodcastDetail ~ podcastToRender:", podcastToRender)
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const podcastId = router.query.id;
-  console.log("🚀 ~ file: PodcastDetail.jsx:16 ~ PodcastDetail ~ podcastId:", podcastId)
+  const[podcastList, setPodcastList] = useLocalStorage(`podcast_${podcastId}`, []);
 
   useEffect(() => {
-    const podcastList = cache.get(`podcast_${podcastId}`, []);
     if (podcastList.length === 0) {
       setLoading(true);
       getPodcastDetail(podcastId).then((resp) => {
         const data = formatPodcastDetail(resp);
         setPodcastToRender(data);
-        podcastId && cache.set(`podcast_${podcastId}`, data);
+        podcastId && setPodcastList(data);
         setLoading(false);
       });
     } else {
