@@ -13,7 +13,7 @@ function App() {
   const [userSearch, setUserSearch] = useState("");
   const [date, setDate, removeDate] = useLocalStorage("date", 0);
   const [podcastData, setPodcastData, removePodcastData] = useLocalStorage("podcastData",[]);
-  const [podcastSelected, setPodcastSelected, removePodcastSelected] = useLocalStorage("podcastSelected", []);
+  const [_, setPodcastSelected] = useLocalStorage("podcastSelected", []);
   const { setLoadingState } = useLoader();
   
   const checkIf24hPassedToValidateInfo = (date) => {
