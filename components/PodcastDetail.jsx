@@ -9,7 +9,7 @@ import PodcastCard from "./PodcastCard";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import { useLoader } from "../contexts/LoadingContext";
 
-const PodcastDetail = ({ params }) => {
+const PodcastDetail = () => {
   const [podcastToRender, setPodcastToRender] = useState([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();

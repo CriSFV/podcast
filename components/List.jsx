@@ -1,6 +1,7 @@
 // import PropTypes from "prop-types";
 import Link from "next/link";
 import styles from "../styles/List.module.sass";
+import Image from "next/image";
 
 const List = (props) => {
   const selectPodcast = (ev) => {
@@ -14,10 +15,12 @@ const List = (props) => {
             href={`/podcast/${podcast.id}`}
             className={styles.list__podcast}
           >
-            <img
+            <Image
               className={styles.list__podcast__img}
               src={podcast.img}
               alt={`imagen_ ${podcast.title}`}
+              width={110}
+              height={110}
             />
             <div
               className={`${styles.list__podcast__text} ${styles.flex_column_space} text__center`}

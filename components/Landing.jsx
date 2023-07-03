@@ -7,6 +7,7 @@ import { formatDataList } from "../helpers/formatDatafromApi";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { useLoader } from "../contexts/LoadingContext";
 
+
 function App() {
   const [data, setData] = useState([]);
   const [userSearch, setUserSearch] = useState("");
@@ -14,11 +15,15 @@ function App() {
   const [podcastData, setPodcastData, removePodcastData] = useLocalStorage("podcastData",[]);
   const [podcastSelected, setPodcastSelected, removePodcastSelected] = useLocalStorage("podcastSelected", []);
   const { setLoadingState } = useLoader();
+  
+  const checkIf24hPassedToValidateInfo = (date) => {
+    const twentyFourHours = 60 * 60 * 24 * 1000;
+    return Date.now() - date >= twentyFourHours
+  }
 
   useEffect(() => {
-    // check if more than one day has passed, if it's less than a day, get data from localStorage
-
-    if (Date.now() - date >= 86400000) {
+    const hasBeenPassed24Hours = checkIf24hPassedToValidateInfo(date)
+    if (hasBeenPassed24Hours) {
       setLoadingState(true);
       getPodcasts().then((response) => {
         setLoadingState(false);
@@ -39,7 +44,7 @@ function App() {
   const handleSearch = (ev) => {
     setUserSearch(ev);
   };
-  // receive podcast user selection
+
   const handleUserSelect = (ev) => {
     const podcast = data.find((pod) => pod.id === ev);
     podcast && setPodcastSelected(podcast);

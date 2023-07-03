@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "../styles/PodcastDetail.module.sass";
 import { useRouter } from "next/router";
 import useLocalStorage from "@/hooks/useLocalStorage";
+import Image from "next/image";
 
 const PodcastCard = () => {
   const router = useRouter();
@@ -14,7 +15,7 @@ const PodcastCard = () => {
       <section className={styles.podcast}>
         <div className={styles.podcast__img}>
           <Link href={`/podcast/${podcastId}`}>
-            <img src={podcast.img} alt={`imagen_ ${podcast.title}`} />
+            <Image src={podcast.img} alt={`imagen_ ${podcast.title}`} width={200} height={200}/>
           </Link>
         </div>
         <hr />
