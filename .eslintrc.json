@@ -1,3 +1,15 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "plugins": [
+    "react",
+    "testing-library"
+  ],
+  "overrides":[
+    {
+      "files": ["**/*.test.js"],
+      "rules": {
+        "testing-library/prefer-screen-queries": "error"
+      }
+    }
+  ]
 }
