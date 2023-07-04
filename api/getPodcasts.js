@@ -3,8 +3,13 @@ export default async function getPodcasts() {
   const url = "https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json"
   const allorigins = encodeURIComponent(`${url}`);
   try{
-    const response = await fetch(`https://api.allorigins.win/raw?url=${allorigins}`);
+    const response = await fetch(`https://api.allorigins.win/raw?url=${allorigins}`, {
+      next: {
+        revalidate: 10,
+      },
+    });
     const data = await response.json();
+    console.log("🚀 ~ file: getPodcasts.js:8 ~ getPodcasts ~ data:", data)
     return data;
   }
   catch(error) {
