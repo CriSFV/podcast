@@ -4,7 +4,7 @@ import styles from "../styles/PodcastDetail.module.sass";
 import { useRouter } from "next/router";
 import sanitizeHtml from "sanitize-html";
 import Layout from "./Layout";
-import useLocalStorage from "@/hooks/useLocalStorage";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const EpisodeDetail = () => {
   const [episode, setEpisode] = useState({});

@@ -4,9 +4,9 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import getPodcastDetail from "../api/getPodcastDetail";
 import Layout from "./Layout";
-import { formatPodcastDetail } from "@/helpers/formatDatafromApi";
+import { formatPodcastDetail } from "../helpers/formatDatafromApi";
 import PodcastCard from "./PodcastCard";
-import useLocalStorage from "@/hooks/useLocalStorage";
+import useLocalStorage from "../hooks/useLocalStorage";
 import { useLoader } from "../contexts/LoadingContext";
 
 const PodcastDetail = () => {

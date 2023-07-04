@@ -12,7 +12,7 @@ import {
   podcastListMockAfterFormated,
 } from "./mocks/podcastsMock";
 import useLocalStorage from "../hooks/useLocalStorage";
-import userEvent from "@testing-library/user-event";
+
 
 jest.mock("../hooks/useLocalStorage", () => ({
   __esModule: true,
