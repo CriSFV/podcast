@@ -1,4 +1,4 @@
-import "@/styles/globals.css";
+import "../styles/globals.css";
 import { LoaderProvider } from "../contexts/LoadingContext";
 
 export default function App({ Component, pageProps }) {

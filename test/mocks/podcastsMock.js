@@ -14,11 +14,11 @@ export const podcastListMock = {"feed":{"author":{"name":{"label":"iTunes Store"
   export const podcastListMockAfterFormated =[
   {
     id: "1535809341",
-    title: "The Joe Budden Podcast",
-    author: "The Joe Budden Network",
+    title: "The Mary Sister Podcast",
+    author: "Mary Sister",
     img: "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/f2/21/fa/f221fabd-017f-5125-633b-f1fe4f39802a/mza_182995249085044287.jpg/170x170bb.png",
     summary:
-      "Tune into Joe Budden and his friends. Follow along the crazy adventures of these very random friends.",
+      "Tune into Mary Sister and his friends. Follow along the crazy adventures of these very random friends.",
   },
   {
     id: "1535809342",
@@ -26,7 +26,7 @@ export const podcastListMock = {"feed":{"author":{"name":{"label":"iTunes Store"
     author: "Jhon Doe",
     img: "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/f2/21/fa/f221fabd-017f-5125-633b-f1fe4f39802a/mza_182995249085044287.jpg/170x170bb.png",
     summary:
-      "Tune into Joe Budden and his friends. Follow along the crazy adventures of these very random friends.",
+      "Tune into John Doe and his friends. Follow along the crazy adventures of these very random friends.",
   },
 ]
 export default { podcastListMock, podcastListMockAfterFormated };

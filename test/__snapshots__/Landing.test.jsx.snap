@@ -1,0 +1,320 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Landing should match with snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="ppal_container"
+      >
+        <header>
+          <div
+            class="loader__container"
+          />
+          <nav>
+            <a
+              class="title"
+              href="/"
+            >
+              Podcaster
+            </a>
+          </nav>
+          <hr
+            class="separator"
+          />
+        </header>
+        <main>
+          <div
+            class="ppal_container"
+          >
+            <section
+              class="searcher"
+            >
+              <span
+                class="searcher__results flex_column_center"
+                data-testid="list-counter"
+                id="list-counter"
+              >
+                2
+              </span>
+              <form
+                action=""
+              >
+                <label
+                  for="search"
+                />
+                <input
+                  class="searcher__input"
+                  id="search"
+                  placeholder="Filter podcast"
+                  type="text"
+                />
+              </form>
+            </section>
+            <section>
+              <ul
+                class="list"
+              >
+                <li
+                  id="1535809341"
+                >
+                  <a
+                    class="list__podcast"
+                    href="/podcast/1535809341"
+                  >
+                    <img
+                      alt="imagen_ The Mary Sister Podcast"
+                      class="list__podcast__img"
+                      data-nimg="1"
+                      decoding="async"
+                      height="120"
+                      loading="lazy"
+                      src="/_next/image?url=https%3A%2F%2Fis1-ssl.mzstatic.com%2Fimage%2Fthumb%2FPodcasts113%2Fv4%2Ff2%2F21%2Ffa%2Ff221fabd-017f-5125-633b-f1fe4f39802a%2Fmza_182995249085044287.jpg%2F170x170bb.png&w=256&q=75"
+                      srcset="/_next/image?url=https%3A%2F%2Fis1-ssl.mzstatic.com%2Fimage%2Fthumb%2FPodcasts113%2Fv4%2Ff2%2F21%2Ffa%2Ff221fabd-017f-5125-633b-f1fe4f39802a%2Fmza_182995249085044287.jpg%2F170x170bb.png&w=128&q=75 1x, /_next/image?url=https%3A%2F%2Fis1-ssl.mzstatic.com%2Fimage%2Fthumb%2FPodcasts113%2Fv4%2Ff2%2F21%2Ffa%2Ff221fabd-017f-5125-633b-f1fe4f39802a%2Fmza_182995249085044287.jpg%2F170x170bb.png&w=256&q=75 2x"
+                      style="color: transparent;"
+                      width="120"
+                    />
+                    <div
+                      class="list__podcast__text flex_column_space text__center"
+                    >
+                      <h6
+                        class="list__podcast__text__title"
+                      >
+                        The Mary Sister Podcast
+                      </h6>
+                      <span
+                        class="list__podcast__text__author"
+                      >
+                        Author: 
+                        Mary Sister
+                      </span>
+                    </div>
+                  </a>
+                </li>
+                <li
+                  id="1535809342"
+                >
+                  <a
+                    class="list__podcast"
+                    href="/podcast/1535809342"
+                  >
+                    <img
+                      alt="imagen_ Podcast Jhon Doe"
+                      class="list__podcast__img"
+                      data-nimg="1"
+                      decoding="async"
+                      height="120"
+                      loading="lazy"
+                      src="/_next/image?url=https%3A%2F%2Fis1-ssl.mzstatic.com%2Fimage%2Fthumb%2FPodcasts113%2Fv4%2Ff2%2F21%2Ffa%2Ff221fabd-017f-5125-633b-f1fe4f39802a%2Fmza_182995249085044287.jpg%2F170x170bb.png&w=256&q=75"
+                      srcset="/_next/image?url=https%3A%2F%2Fis1-ssl.mzstatic.com%2Fimage%2Fthumb%2FPodcasts113%2Fv4%2Ff2%2F21%2Ffa%2Ff221fabd-017f-5125-633b-f1fe4f39802a%2Fmza_182995249085044287.jpg%2F170x170bb.png&w=128&q=75 1x, /_next/image?url=https%3A%2F%2Fis1-ssl.mzstatic.com%2Fimage%2Fthumb%2FPodcasts113%2Fv4%2Ff2%2F21%2Ffa%2Ff221fabd-017f-5125-633b-f1fe4f39802a%2Fmza_182995249085044287.jpg%2F170x170bb.png&w=256&q=75 2x"
+                      style="color: transparent;"
+                      width="120"
+                    />
+                    <div
+                      class="list__podcast__text flex_column_space text__center"
+                    >
+                      <h6
+                        class="list__podcast__text__title"
+                      >
+                        Podcast Jhon Doe
+                      </h6>
+                      <span
+                        class="list__podcast__text__author"
+                      >
+                        Author: 
+                        Jhon Doe
+                      </span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </section>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="ppal_container"
+    >
+      <header>
+        <div
+          class="loader__container"
+        />
+        <nav>
+          <a
+            class="title"
+            href="/"
+          >
+            Podcaster
+          </a>
+        </nav>
+        <hr
+          class="separator"
+        />
+      </header>
+      <main>
+        <div
+          class="ppal_container"
+        >
+          <section
+            class="searcher"
+          >
+            <span
+              class="searcher__results flex_column_center"
+              data-testid="list-counter"
+              id="list-counter"
+            >
+              2
+            </span>
+            <form
+              action=""
+            >
+              <label
+                for="search"
+              />
+              <input
+                class="searcher__input"
+                id="search"
+                placeholder="Filter podcast"
+                type="text"
+              />
+            </form>
+          </section>
+          <section>
+            <ul
+              class="list"
+            >
+              <li
+                id="1535809341"
+              >
+                <a
+                  class="list__podcast"
+                  href="/podcast/1535809341"
+                >
+                  <img
+                    alt="imagen_ The Mary Sister Podcast"
+                    class="list__podcast__img"
+                    data-nimg="1"
+                    decoding="async"
+                    height="120"
+                    loading="lazy"
+                    src="/_next/image?url=https%3A%2F%2Fis1-ssl.mzstatic.com%2Fimage%2Fthumb%2FPodcasts113%2Fv4%2Ff2%2F21%2Ffa%2Ff221fabd-017f-5125-633b-f1fe4f39802a%2Fmza_182995249085044287.jpg%2F170x170bb.png&w=256&q=75"
+                    srcset="/_next/image?url=https%3A%2F%2Fis1-ssl.mzstatic.com%2Fimage%2Fthumb%2FPodcasts113%2Fv4%2Ff2%2F21%2Ffa%2Ff221fabd-017f-5125-633b-f1fe4f39802a%2Fmza_182995249085044287.jpg%2F170x170bb.png&w=128&q=75 1x, /_next/image?url=https%3A%2F%2Fis1-ssl.mzstatic.com%2Fimage%2Fthumb%2FPodcasts113%2Fv4%2Ff2%2F21%2Ffa%2Ff221fabd-017f-5125-633b-f1fe4f39802a%2Fmza_182995249085044287.jpg%2F170x170bb.png&w=256&q=75 2x"
+                    style="color: transparent;"
+                    width="120"
+                  />
+                  <div
+                    class="list__podcast__text flex_column_space text__center"
+                  >
+                    <h6
+                      class="list__podcast__text__title"
+                    >
+                      The Mary Sister Podcast
+                    </h6>
+                    <span
+                      class="list__podcast__text__author"
+                    >
+                      Author: 
+                      Mary Sister
+                    </span>
+                  </div>
+                </a>
+              </li>
+              <li
+                id="1535809342"
+              >
+                <a
+                  class="list__podcast"
+                  href="/podcast/1535809342"
+                >
+                  <img
+                    alt="imagen_ Podcast Jhon Doe"
+                    class="list__podcast__img"
+                    data-nimg="1"
+                    decoding="async"
+                    height="120"
+                    loading="lazy"
+                    src="/_next/image?url=https%3A%2F%2Fis1-ssl.mzstatic.com%2Fimage%2Fthumb%2FPodcasts113%2Fv4%2Ff2%2F21%2Ffa%2Ff221fabd-017f-5125-633b-f1fe4f39802a%2Fmza_182995249085044287.jpg%2F170x170bb.png&w=256&q=75"
+                    srcset="/_next/image?url=https%3A%2F%2Fis1-ssl.mzstatic.com%2Fimage%2Fthumb%2FPodcasts113%2Fv4%2Ff2%2F21%2Ffa%2Ff221fabd-017f-5125-633b-f1fe4f39802a%2Fmza_182995249085044287.jpg%2F170x170bb.png&w=128&q=75 1x, /_next/image?url=https%3A%2F%2Fis1-ssl.mzstatic.com%2Fimage%2Fthumb%2FPodcasts113%2Fv4%2Ff2%2F21%2Ffa%2Ff221fabd-017f-5125-633b-f1fe4f39802a%2Fmza_182995249085044287.jpg%2F170x170bb.png&w=256&q=75 2x"
+                    style="color: transparent;"
+                    width="120"
+                  />
+                  <div
+                    class="list__podcast__text flex_column_space text__center"
+                  >
+                    <h6
+                      class="list__podcast__text__title"
+                    >
+                      Podcast Jhon Doe
+                    </h6>
+                    <span
+                      class="list__podcast__text__author"
+                    >
+                      Author: 
+                      Jhon Doe
+                    </span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
