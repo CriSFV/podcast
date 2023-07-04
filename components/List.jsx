@@ -8,7 +8,7 @@ const List = (props) => {
     props.handleUserSelect(ev.currentTarget.id);
   };
   const printList = () => {
-    return props.data.map((podcast) => {
+    return props.data?.map((podcast) => {
       return (
         <li key={podcast.id} id={podcast.id} onClick={selectPodcast}>
           <Link
@@ -19,8 +19,8 @@ const List = (props) => {
               className={styles.list__podcast__img}
               src={podcast.img}
               alt={`imagen_ ${podcast.title}`}
-              width={110}
-              height={110}
+              width={120}
+              height={120}
             />
             <div
               className={`${styles.list__podcast__text} ${styles.flex_column_space} text__center`}

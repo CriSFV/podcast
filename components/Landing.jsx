@@ -20,20 +20,22 @@ function App() {
     const twentyFourHours = 60 * 60 * 24 * 1000;
     return Date.now() - date >= twentyFourHours
   }
-
   useEffect(() => {
     const hasBeenPassed24Hours = checkIf24hPassedToValidateInfo(date)
     if (hasBeenPassed24Hours) {
+    
       setLoadingState(true);
-      getPodcasts().then((response) => {
-        setLoadingState(false);
+      const getApiInfo = async ()=>{
+        const response = await getPodcasts()
         const dataFormatted = formatDataList(response);
         setData(dataFormatted);
         removeDate();
         setDate(Date.now());
         removePodcastData();
         setPodcastData(dataFormatted);
-      });
+        setLoadingState(false);
+      }
+      getApiInfo()
     } else {
       setLoadingState(false);
       setData(podcastData);
