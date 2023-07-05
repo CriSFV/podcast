@@ -9,14 +9,12 @@ const PodcastCard = ({podcast}) => {
   const router = useRouter();
   const podcastId = router.query.id;
 
-  // console.log('podcast desde PodcastCard',podcast);
-
   return (
     podcast && (
       <section className={styles.podcast}>
         <div className={styles.podcast__img}>
           <Link href={`/podcast/${podcastId}`}>
-            <Image src={podcast.img} alt={`imagen_ ${podcast.title}`} width={200} height={200}/>
+            <Image src={podcast.img ?? 'https://via.placeholder.com/200x200/ffffff/666666/?text=Podcast'} alt={`imagen_ ${podcast.title}`} width={200} height={200}/>
           </Link>
         </div>
         <hr />
