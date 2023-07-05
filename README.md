@@ -1,4 +1,4 @@
-# Podcast_finder
+# Podcast
 
 The project displays a list of podcasts that you can select and view theis details and listen them.
 
@@ -6,10 +6,14 @@ The project displays a list of podcasts that you can select and view theis detai
 2. Podcast details, that is displayed when you click on one of the list.
 3. Podcast chapter detail, where you can read the description and listen the podcast.
 
+
 ### Tech Stack
 - [React](https://react.dev/)
 - [NextJS](https://nextjs.org/docs)
-- [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- [JestJS](https://jestjs.io/).
+- [React Testing Library](https://testing-library.com/docs/)
+
+LocalStorage is used in the project if does not pass more than 24h from the last visit
 
 ## Installation
 
@@ -40,6 +44,13 @@ For starting **development mode**:
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Run the tests
+
+
+```bash
+  npm run test
+```
 
 
 For launching **build mode**:
