@@ -10,13 +10,6 @@ export default function useLocalStorage(key, initialValue) {
       return initialValue;
     }
   });
-  const clearStore = () => {
-    try {
-      window.localStorage.clear();
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const setValue = (value) => {
     try {
@@ -26,5 +19,5 @@ export default function useLocalStorage(key, initialValue) {
       console.log(error);
     }
   };
-  return [storedValue, setValue , clearStore];
+  return [storedValue, setValue ];
 }
