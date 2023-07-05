@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, } from "@testing-library/react";
 import Landing from "../components/Landing";
 import "@testing-library/jest-dom";
 import { LoaderProvider } from "../contexts/LoadingContext";
@@ -10,7 +10,6 @@ import {
   podcastDetailMock,
 } from "./mocks/podcastsMock";
 import useLocalStorage from "../hooks/useLocalStorage";
-import getPodcastInfo from "../api/getPodcastDetail";
 import PodcastDetail from "../components/PodcastDetail";
 import PodcastCard from "../components/PodcastCard";
 import EpisodeDetail from "../components/EpisodeDetail";
@@ -40,9 +39,15 @@ const LandingWithProvider = (props) => (
 );
 
 describe("Landing", () => {
-  afterAll(() => {
-    jest.clearAllMocks();
+  beforeEach(() => {
+    getPodcasts.mockClear()
+    useLocalStorage.mockClear()
   });
+  afterEach(() => {
+    getPodcasts.mockRestore()
+    useLocalStorage.mockRestore()
+  });
+
 
   it("should match with snapshot", () => {
     useLocalStorage.mockImplementation(() => [Date.now() - 100]);
@@ -52,17 +57,27 @@ describe("Landing", () => {
     expect(screen.getByText("Podcaster")).toBeInTheDocument();
     expect(component).toMatchSnapshot();
   });
+  
+  it("should get data from api", () => {
+    const getPodcastMock = getPodcasts.mockImplementation(() => podcastListMock);
+    useLocalStorage.mockImplementation(() => [0, jest.fn()]);
+    render(<LandingWithProvider />);
+    expect(screen.getByText("Podcaster")).toBeInTheDocument();
+    expect(getPodcastMock).toHaveBeenCalled();
+  });
 
-  it("should render the list", () => {
+  it("should render the list from localStorage", () => {
     const getPodcastMock = getPodcasts.mockImplementation(
       () => podcastListMock
     );
     useLocalStorage.mockImplementation(() => [Date.now() - 100]);
-    useLocalStorage.mockImplementation(() => [podcastListMockAfterFormated]);
+    useLocalStorage.mockImplementation(() => [podcastListMockAfterFormated, jest.fn()]);
 
     const component = render(<LandingWithProvider />);
+    const podcastList = screen.getAllByRole("listitem");
     expect(screen.getByText("Podcaster")).toBeInTheDocument();
     expect(component.container).toHaveTextContent("Jhon Doe");
+    expect(podcastList).toHaveLength(2);
     expect(getPodcastMock).not.toHaveBeenCalled();
   });
 
@@ -78,6 +93,7 @@ describe("Landing", () => {
     );
     const input = screen.getByPlaceholderText("Filter podcast");
     const listCounter = screen.getByTestId("list-counter");
+    expect(listCounter).toHaveTextContent(2);
 
     fireEvent.keyUp(input, { target: { value: "doe" } });
 
@@ -89,12 +105,7 @@ describe("Landing", () => {
 
 describe("PodcastDetail", () => {
   it("should render a podcast episodes list", () => {
-    getPodcastInfo.mockImplementation(() => {
-      podcastDetailMock;
-    });
-    getPodcasts.mockImplementation(() => {
-      podcastListMock;
-    });
+
     useLocalStorage.mockImplementation(() => [podcastDetailMock]);
     // useLocalStorage.mockImplementation(() => [podcastSelectedMock]);
 
@@ -109,12 +120,7 @@ describe("PodcastDetail", () => {
 });
 describe("EpisodeDetail", () => {
   it("should render an episode", () => {
-    getPodcastInfo.mockImplementation(() => {
-      podcastDetailMock;
-    });
-    getPodcasts.mockImplementation(() => {
-      podcastListMock;
-    });
+
     useLocalStorage.mockImplementation(() => [podcastDetailMock]);
 
     render(
