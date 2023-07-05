@@ -11,8 +11,8 @@ import { useLoader } from "../contexts/LoadingContext";
 function App() {
   const [data, setData] = useState([]);
   const [userSearch, setUserSearch] = useState("");
-  const [date, setDate, removeDate] = useLocalStorage("date", 0);
-  const [podcastData, setPodcastData, removePodcastData] = useLocalStorage("podcastData",[]);
+  const [date, setDate, clearStore] = useLocalStorage("date", 0);
+  const [podcastData, setPodcastData] = useLocalStorage("podcastData",[]);
   const [_, setPodcastSelected] = useLocalStorage("podcastSelected", []);
   const { setLoadingState } = useLoader();
   
@@ -28,10 +28,9 @@ function App() {
       const getApiInfo = async ()=>{
         const response = await getPodcasts()
         const dataFormatted = formatDataList(response);
+        clearStore();
         setData(dataFormatted);
-        removeDate();
         setDate(Date.now());
-        removePodcastData();
         setPodcastData(dataFormatted);
         setLoadingState(false);
       }

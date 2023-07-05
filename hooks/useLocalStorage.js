@@ -10,9 +10,9 @@ export default function useLocalStorage(key, initialValue) {
       return initialValue;
     }
   });
-  const removeValue = () => {
+  const clearStore = () => {
     try {
-      window.localStorage.removeItem(key);
+      window.localStorage.clear();
     } catch (error) {
       console.log(error);
     }
@@ -26,5 +26,5 @@ export default function useLocalStorage(key, initialValue) {
       console.log(error);
     }
   };
-  return [storedValue, setValue , removeValue];
+  return [storedValue, setValue , clearStore];
 }
