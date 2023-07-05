@@ -2,13 +2,14 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 import styles from "../styles/PodcastDetail.module.sass";
 import { useRouter } from "next/router";
-import useLocalStorage from "../hooks/useLocalStorage";
+// import useLocalStorage from "../hooks/useLocalStorage";
 import Image from "next/image";
 
-const PodcastCard = () => {
+const PodcastCard = ({podcast}) => {
   const router = useRouter();
   const podcastId = router.query.id;
-  const [podcast] = useLocalStorage('podcastSelected', []);
+
+  // console.log('podcast desde PodcastCard',podcast);
 
   return (
     podcast && (

@@ -11,6 +11,8 @@ const EpisodeDetail = () => {
   const router = useRouter();
   const { id, trackId } = router.query;
   const [podcastSelected] = useLocalStorage(`podcast_${id}`, []);
+  const [podcast] = useLocalStorage('podcastSelected', []);
+
 
   useEffect(() => {
     const episodeToRender = podcastSelected?.filter(
@@ -26,7 +28,7 @@ const EpisodeDetail = () => {
   return (
     <Layout title={"Episode Detail | Podcast"}>
       <div className={styles.podcastDetail__container}>
-        <PodcastCard podcastId={id} />
+        <PodcastCard podcastId={id} podcast={podcast}/>
         <section className={styles.podcast}>
           <h2>{episode?.trackName}</h2>
           <p id="episodeDescription">

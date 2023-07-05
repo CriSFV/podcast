@@ -15,6 +15,8 @@ const PodcastDetail = () => {
   const router = useRouter();
   const podcastId = router.query.id;
   const [podcastList, setPodcastList] = useLocalStorage(`podcast_${podcastId}`, [] );
+  const [podcast] = useLocalStorage('podcastSelected', []);
+
   const { setLoadingState } = useLoader();
 
   useEffect(() => {
@@ -46,7 +48,7 @@ const PodcastDetail = () => {
   };
 
   const printTable = () => {
-    return podcastToRender?.map((episode) => {
+    return podcastToRender&&podcastToRender?.map((episode) => {
       if (episode.wrapperType === "podcastEpisode") {
         const episodeDate = new Date(episode.releaseDate);
         const time = episode.trackTimeMillis / 1000;
@@ -76,7 +78,7 @@ const PodcastDetail = () => {
   return (
     <Layout isLoading={loading} title={"Episodes | Podcast"}>
       <div className={styles.podcastDetail__container}>
-        <PodcastCard podcastId={podcastId} />
+        <PodcastCard podcastId={podcastId} podcast={podcast}/>
         <section>
           <h2 className={`box-shadow ${styles.detail__episodes}`}>
             Episodes:{" "}
