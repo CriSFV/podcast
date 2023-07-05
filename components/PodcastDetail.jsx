@@ -11,28 +11,24 @@ import { useLoader } from "../contexts/LoadingContext";
 
 const PodcastDetail = () => {
   const [podcastToRender, setPodcastToRender] = useState([]);
-  const [loading, setLoading] = useState(true);
   const router = useRouter();
   const podcastId = router.query.id;
   const [podcastList, setPodcastList] = useLocalStorage(`podcast_${podcastId}`, [] );
   const [podcast] = useLocalStorage('podcastSelected', []);
 
-  const { setLoadingState } = useLoader();
+  const {loading, setLoadingState } = useLoader();
 
   useEffect(() => {
     if (podcastList.length === 0) {
       setLoadingState(true);
-      setLoading(true);
       getPodcastDetail(podcastId).then((resp) => {
         const data = formatPodcastDetail(resp);
         setPodcastToRender(data);
         podcastId && setPodcastList(data);
-        setLoading(false);
         setLoadingState(false);
       });
     } else {
       setPodcastToRender(podcastList);
-      setLoading(false);
       setLoadingState(false);
     }
   }, [podcastId]);
@@ -48,7 +44,7 @@ const PodcastDetail = () => {
   };
 
   const printTable = () => {
-    return podcastToRender&&podcastToRender?.map((episode) => {
+    return podcastToRender && podcastToRender?.map((episode) => {
       if (episode.wrapperType === "podcastEpisode") {
         const episodeDate = new Date(episode.releaseDate);
         const time = episode.trackTimeMillis / 1000;
@@ -76,10 +72,10 @@ const PodcastDetail = () => {
   };
 
   return (
-    <Layout isLoading={loading} title={"Episodes | Podcast"}>
+    <Layout title={"Episodes | Podcast"}>
       <div className={styles.podcastDetail__container}>
         <PodcastCard podcastId={podcastId} podcast={podcast}/>
-        <section>
+        {!loading && <section>
           <h2 className={`box-shadow ${styles.detail__episodes}`}>
             Episodes:{" "}
             {podcastToRender?.length ? podcastToRender.length - 1 : "-"}{" "}
@@ -100,7 +96,7 @@ const PodcastDetail = () => {
             </thead>
             <tbody>{printTable()}</tbody>
           </table>
-        </section>
+        </section>}
       </div>
     </Layout>
   );
