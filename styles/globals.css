@@ -21,3 +21,10 @@
 .list-decoration-none{
   text-decoration: none;
 }
+.not_found{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}

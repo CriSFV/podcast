@@ -5,7 +5,6 @@ export default async function getPodcasts() {
   try{
     const response = await fetch(`https://api.allorigins.win/raw?url=${allorigins}`, { cache: "no-store" });
     const data = await response.json();
-    console.log("🚀 ~ file: getPodcasts.js:8 ~ getPodcasts ~ data:", data)
     return data;
   }
   catch(error) {
