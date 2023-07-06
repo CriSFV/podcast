@@ -39,7 +39,7 @@ function App() {
       setLoadingState(false);
       setData(podcastData);
     }
-  }, []);
+  }, [date, podcastData, setDate, setPodcastData, setLoadingState]);
 
   // recive input value
   const handleSearch = (ev) => {

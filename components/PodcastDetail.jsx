@@ -31,7 +31,7 @@ const PodcastDetail = () => {
       setPodcastToRender(podcastList);
       setLoadingState(false);
     }
-  }, [podcastId]);
+  }, [podcastId, setLoadingState, setPodcastList, podcastList]);
 
   const convertTime = (seconds) => {
     let hour = Math.floor(seconds / 3600);

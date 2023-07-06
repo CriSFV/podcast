@@ -11,7 +11,7 @@ const EpisodeDetail = () => {
   const router = useRouter();
   const { id, trackId } = router.query;
   const [podcastSelected] = useLocalStorage(`podcast_${id}`, []);
-  const [podcast] = useLocalStorage('podcastSelected', []);
+  const [podcast, setPodcast] = useLocalStorage('podcastSelected', []);
 
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const EpisodeDetail = () => {
       (x) => x.trackId === parseInt(trackId)
     );
     setEpisode(episodeToRender[0]);
-  }, [id, trackId]);
+  }, [id, trackId, podcastSelected]);
 
   const printDescriptionEpisode = (description) => {
     return sanitizeHtml(description);
