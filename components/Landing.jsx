@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import getPodcasts from "../api/getPodcasts";
 import Home from "./Home";
 import Layout from "./Layout";
@@ -11,7 +11,6 @@ import { checkIf24hPassedToValidateInfo } from "../helpers/checkIf24hHasPassed";
 function App() {
   const [data, setData] = useState([]);
   const [userSearch, setUserSearch] = useState("");
-  const [date, setDate] = useCache("date", 0);
   const [podcastData, setPodcastData] = useCache("podcastData", []);
   const [_, setPodcastSelected] = useCache("podcastSelected", {});
   const { setLoadingState } = useLoader();

@@ -44,7 +44,6 @@ describe("Landing", () => {
   });
 
   it("should match with snapshot", () => {
-    useCache.mockImplementation(() => [Date.now() - 100]);
     useCache.mockImplementation(() => [podcastListMockAfterFormated]);
 
     const component = render(<LandingWithProvider />);
@@ -56,7 +55,6 @@ describe("Landing", () => {
     const getPodcastMock = getPodcasts.mockImplementation(
       () => podcastListMock
     );
-    useCache.mockImplementation(() => [Date.now() - 100]);
     useCache.mockImplementation(() => [
       podcastListMockAfterFormated,
       jest.fn(),
@@ -71,7 +69,6 @@ describe("Landing", () => {
   });
 
   it("should search a podcast from the input", () => {
-    useCache.mockImplementation(() => [Date.now() - 100]);
     useCache.mockImplementation(() => [podcastListMockAfterFormated]);
     
     const userSearch = jest.fn();
