@@ -6,40 +6,39 @@ import Layout from "./Layout";
 import { formatDataList } from "../helpers/formatDatafromApi";
 import useCache from "../hooks/useCache";
 import { useLoader } from "../contexts/LoadingContext";
-
+import { checkIf24hPassedToValidateInfo } from "../helpers/checkIf24hHasPassed";
 
 function App() {
   const [data, setData] = useState([]);
   const [userSearch, setUserSearch] = useState("");
   const [date, setDate] = useCache("date", 0);
-  const [podcastData, setPodcastData] = useCache("podcastData",[]);
+  const [podcastData, setPodcastData] = useCache("podcastData", []);
   const [_, setPodcastSelected] = useCache("podcastSelected", {});
   const { setLoadingState } = useLoader();
-  
-  const checkIf24hPassedToValidateInfo = (date) => {
-    const twentyFourHours = 60 * 60 * 24 * 1000;
-    return Date.now() - date >= twentyFourHours
-  }
+
   useEffect(() => {
-    const hasBeenPassed24Hours = checkIf24hPassedToValidateInfo(date)
+    const hasBeenPassed24Hours = checkIf24hPassedToValidateInfo(
+      podcastData?.date ?? 0
+    );
     if (hasBeenPassed24Hours) {
-    
       setLoadingState(true);
-      const getApiInfo = async ()=>{
+      const getApiInfo = async () => {
         window.localStorage.clear();
-        const response = await getPodcasts()
-        const dataFormatted = formatDataList(response);
-        setData(dataFormatted);
-        setDate(Date.now());
+        const response = await getPodcasts();
+        const dataFormatted = {
+          podcastData: formatDataList(response),
+          date: Date.now(),
+        };
+        setData(dataFormatted.podcastData);
         setPodcastData(dataFormatted);
         setLoadingState(false);
-      }
-      getApiInfo()
+      };
+      getApiInfo();
     } else {
       setLoadingState(false);
-      setData(podcastData);
+      setData(podcastData.podcastData);
     }
-  }, [date, podcastData, setDate, setPodcastData, setLoadingState]);
+  }, [podcastData, setPodcastData, setLoadingState]);
 
   // recive input value
   const handleSearch = (ev) => {
@@ -48,7 +47,7 @@ function App() {
 
   const handleUserSelect = (ev) => {
     const podcast = data.find((pod) => pod.id === ev);
-    podcast && setPodcastSelected(podcast);
+    podcast && setPodcastSelected({ podcast, date: Date.now() });
   };
 
   const podcastFiltered =

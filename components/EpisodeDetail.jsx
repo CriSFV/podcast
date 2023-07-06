@@ -11,11 +11,11 @@ const EpisodeDetail = () => {
   const router = useRouter();
   const { id, trackId } = router.query;
   const [podcastSelected] = useCache(`podcast_${id}`, []);
-  const [podcast, setPodcast] = useCache('podcastSelected', []);
+  const [podcast] = useCache('podcastSelected', []);
 
 
   useEffect(() => {
-    const episodeToRender = podcastSelected?.filter(
+    const episodeToRender = podcastSelected?.data?.filter(
       (x) => x.trackId === parseInt(trackId)
     );
     setEpisode(episodeToRender[0]);
@@ -28,7 +28,7 @@ const EpisodeDetail = () => {
   return (
     <Layout title={"Episode Detail | Podcast"}>
       <div className={styles.podcastDetail__container}>
-        <PodcastCard podcastId={id} podcast={podcast}/>
+        <PodcastCard podcastId={id} podcast={podcast.podcast}/>
         <section className={styles.podcast}>
           <h2>{episode?.trackName}</h2>
           <p id="episodeDescription">

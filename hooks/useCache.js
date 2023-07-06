@@ -20,5 +20,13 @@ export default function useCache(key, initialValue) {
       console.log(error);
     }
   };
-  return [storedValue, setValue ];
+
+  const removeValue = (value) => {
+    try {
+      cacheService.remove(key);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  return [storedValue, setValue, removeValue];
 }

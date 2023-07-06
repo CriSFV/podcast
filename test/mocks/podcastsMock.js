@@ -156,33 +156,40 @@ export const podcastListMock = {
   },
 };
 
-export const podcastListMockAfterFormated = [
-  {
-    id: "1535809341",
-    title: "The Mary Sister Podcast",
-    author: "Mary Sister",
-    img: "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/f2/21/fa/f221fabd-017f-5125-633b-f1fe4f39802a/mza_182995249085044287.jpg/170x170bb.png",
-    summary:
-      "Tune into Mary Sister and his friends. Follow along the crazy adventures of these very random friends.",
-  },
-  {
-    id: "1535809342",
-    title: "Podcast Jhon Doe",
-    author: "Jhon Doe",
-    img: "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/f2/21/fa/f221fabd-017f-5125-633b-f1fe4f39802a/mza_182995249085044287.jpg/170x170bb.png",
-    summary:
-      "Tune into John Doe and his friends. Follow along the crazy adventures of these very random friends.",
-  },
-];
+export const podcastListMockAfterFormated = {
+  date: Date.now()-100,
+  podcastData:[
+    {
+      id: "1535809341",
+      title: "The Mary Sister Podcast",
+      author: "Mary Sister",
+      img: "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/f2/21/fa/f221fabd-017f-5125-633b-f1fe4f39802a/mza_182995249085044287.jpg/170x170bb.png",
+      summary:
+        "Tune into Mary Sister and his friends. Follow along the crazy adventures of these very random friends.",
+    },
+    {
+      id: "1535809342",
+      title: "Podcast Jhon Doe",
+      author: "Jhon Doe",
+      img: "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/f2/21/fa/f221fabd-017f-5125-633b-f1fe4f39802a/mza_182995249085044287.jpg/170x170bb.png",
+      summary:
+        "Tune into John Doe and his friends. Follow along the crazy adventures of these very random friends.",
+    },
+  ]
+};
 export const podcastSelectedMock = {
+  date: Date.now()-100,
+  podcast:{
   id: "1535809342",
   title: "Podcast Jhon Doe",
   author: "Jhon Doe",
   img: "https://is1-ssl.mzstatic.com/image/thumb/Podcasts113/v4/f2/21/fa/f221fabd-017f-5125-633b-f1fe4f39802a/mza_182995249085044287.jpg/170x170bb.png",
   summary:
     "Tune into John Doe and his friends. Follow along the crazy adventures of these very random friends.",
-};
-export const podcastDetailMock = [
+}};
+export const podcastDetailMock = {
+  date: Date.now()-100,
+  data:[
   {
     id_author: 1535809342,
     releaseDate: "2023-07-02T23:30:00Z",
@@ -216,7 +223,7 @@ export const podcastDetailMock = [
     trackTimeMillis: 3429000,
     wrapperType: "podcastEpisode",
   },
-];
+]};
 export default {
   podcastListMock,
   podcastListMockAfterFormated,

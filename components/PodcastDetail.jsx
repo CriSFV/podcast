@@ -8,30 +8,35 @@ import { formatPodcastDetail } from "../helpers/formatDatafromApi";
 import PodcastCard from "./PodcastCard";
 import useCache from "../hooks/useCache";
 import { useLoader } from "../contexts/LoadingContext";
+import {checkIf24hPassedToValidateInfo} from "../helpers/checkIf24hHasPassed";
+import cacheService from "../api/cacheService";
 
 const PodcastDetail = () => {
   const [podcastToRender, setPodcastToRender] = useState([]);
   const router = useRouter();
   const podcastId = router.query.id;
-  const [podcastList, setPodcastList] = useCache(`podcast_${podcastId}`, [] );
-  const [podcast] = useCache('podcastSelected', []);
+  const [podcastList, setPodcastList, removePodcastList] = useCache(`podcast_${podcastId}`, [] );
+  const [podcast] = useCache('podcastSelected', {});
 
   const {loading, setLoadingState } = useLoader();
 
   useEffect(() => {
-    if (podcastList.length === 0) {
+    const hasBeenPassed24Hours = checkIf24hPassedToValidateInfo(podcastList?.date ?? 0)
+    if (podcastList?.length === 0 || hasBeenPassed24Hours) {
       setLoadingState(true);
+      removePodcastList(`podcast_${podcastId}`)
       getPodcastDetail(podcastId).then((resp) => {
         const data = formatPodcastDetail(resp);
         setPodcastToRender(data);
-        podcastId && setPodcastList(data);
+        podcastId && setPodcastList({data, date: Date.now()});
         setLoadingState(false);
       });
     } else {
-      setPodcastToRender(podcastList);
+      
+      setPodcastToRender(podcastList.data);
       setLoadingState(false);
     }
-  }, [podcastId, setLoadingState, setPodcastList, podcastList]);
+  }, [podcastId, setLoadingState, setPodcastList, podcastList, removePodcastList]);
 
   const convertTime = (seconds) => {
     let hour = Math.floor(seconds / 3600);
@@ -74,7 +79,7 @@ const PodcastDetail = () => {
   return (
     <Layout title={"Episodes | Podcast"}>
       <div className={styles.podcastDetail__container}>
-        <PodcastCard podcastId={podcastId} podcast={podcast}/>
+        <PodcastCard podcastId={podcastId} podcast={podcast.podcast}/>
         {!loading && <section>
           <h2 className={`box-shadow ${styles.detail__episodes}`}>
             Episodes:{" "}
