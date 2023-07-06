@@ -6,13 +6,13 @@ import {
 } from "./mocks/podcastsMock";
 import PodcastCard from "../components/PodcastCard";
 
-jest.mock("../hooks/useLocalStorage", () => ({
-  __esModule: true,
-  default: jest.fn(),
-}));
+// jest.mock("../hooks/useLocalStorage", () => ({
+//   __esModule: true,
+//   default: jest.fn(),
+// }));
 
-jest.mock("../api/getPodcasts", () => jest.fn());
-jest.mock("../api/getPodcastDetail", () => jest.fn());
+// jest.mock("../api/getPodcasts", () => jest.fn());
+// jest.mock("../api/getPodcastDetail", () => jest.fn());
 
 jest.mock("next/router", () => ({
   ...jest.requireActual("next/router"),

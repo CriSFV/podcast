@@ -2,10 +2,10 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { LoaderProvider } from "../contexts/LoadingContext";
 import { podcastDetailMock } from "./mocks/podcastsMock";
-import useLocalStorage from "../hooks/useLocalStorage";
+import useCache from "../hooks/useCache";
 import EpisodeDetail from "../components/EpisodeDetail";
 
-jest.mock("../hooks/useLocalStorage", () => ({
+jest.mock("../hooks/useCache", () => ({
   __esModule: true,
   default: jest.fn(),
 }));
@@ -25,7 +25,7 @@ jest.mock("next/router", () => ({
 
 describe("EpisodeDetail", () => {
   it("should render an episode", () => {
-    useLocalStorage.mockImplementation(() => [podcastDetailMock]);
+    useCache.mockImplementation(() => [podcastDetailMock]);
 
     render(
       <LoaderProvider>

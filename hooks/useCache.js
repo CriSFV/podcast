@@ -1,11 +1,12 @@
 'use client'
 import { useState } from "react";
+import cacheService from "../api/cacheService";
 
-export default function useLocalStorage(key, initialValue) {
+export default function useCache(key, initialValue) {
   const [storedValue, setStoredValue] = useState(() => {
     try {
-      const item = window.localStorage.getItem(key);
-      return item ? JSON.parse(item) : initialValue;
+      const item = cacheService.get(key);
+      return item ?? initialValue;
     } catch (error) {
       return initialValue;
     }
@@ -14,7 +15,7 @@ export default function useLocalStorage(key, initialValue) {
   const setValue = (value) => {
     try {
       setStoredValue(value);
-      window.localStorage.setItem(key, JSON.stringify(value));
+      cacheService.set(key, value);
     } catch (error) {
       console.log(error);
     }

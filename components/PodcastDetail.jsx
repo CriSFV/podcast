@@ -6,15 +6,15 @@ import getPodcastDetail from "../api/getPodcastDetail";
 import Layout from "./Layout";
 import { formatPodcastDetail } from "../helpers/formatDatafromApi";
 import PodcastCard from "./PodcastCard";
-import useLocalStorage from "../hooks/useLocalStorage";
+import useCache from "../hooks/useCache";
 import { useLoader } from "../contexts/LoadingContext";
 
 const PodcastDetail = () => {
   const [podcastToRender, setPodcastToRender] = useState([]);
   const router = useRouter();
   const podcastId = router.query.id;
-  const [podcastList, setPodcastList] = useLocalStorage(`podcast_${podcastId}`, [] );
-  const [podcast] = useLocalStorage('podcastSelected', []);
+  const [podcastList, setPodcastList] = useCache(`podcast_${podcastId}`, [] );
+  const [podcast] = useCache('podcastSelected', []);
 
   const {loading, setLoadingState } = useLoader();
 

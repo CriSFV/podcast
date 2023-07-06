@@ -7,9 +7,9 @@ import {
   podcastListMock,
   podcastListMockAfterFormated,
 } from "./mocks/podcastsMock";
-import useLocalStorage from "../hooks/useLocalStorage";
+import useCache from "../hooks/useCache";
 
-jest.mock("../hooks/useLocalStorage", () => ({
+jest.mock("../hooks/useCache", () => ({
   __esModule: true,
   default: jest.fn(),
 }));
@@ -36,16 +36,16 @@ const LandingWithProvider = (props) => (
 describe("Landing", () => {
   beforeEach(() => {
     getPodcasts.mockClear();
-    useLocalStorage.mockClear();
+    useCache.mockClear();
   });
   afterEach(() => {
     getPodcasts.mockRestore();
-    useLocalStorage.mockRestore();
+    useCache.mockRestore();
   });
 
   it("should match with snapshot", () => {
-    useLocalStorage.mockImplementation(() => [Date.now() - 100]);
-    useLocalStorage.mockImplementation(() => [podcastListMockAfterFormated]);
+    useCache.mockImplementation(() => [Date.now() - 100]);
+    useCache.mockImplementation(() => [podcastListMockAfterFormated]);
 
     const component = render(<LandingWithProvider />);
     expect(screen.getByText("Podcaster")).toBeInTheDocument();
@@ -56,8 +56,8 @@ describe("Landing", () => {
     const getPodcastMock = getPodcasts.mockImplementation(
       () => podcastListMock
     );
-    useLocalStorage.mockImplementation(() => [Date.now() - 100]);
-    useLocalStorage.mockImplementation(() => [
+    useCache.mockImplementation(() => [Date.now() - 100]);
+    useCache.mockImplementation(() => [
       podcastListMockAfterFormated,
       jest.fn(),
     ]);
@@ -71,9 +71,9 @@ describe("Landing", () => {
   });
 
   it("should search a podcast from the input", () => {
-    useLocalStorage.mockImplementation(() => [Date.now() - 100]);
-    useLocalStorage.mockImplementation(() => [podcastListMockAfterFormated]);
-
+    useCache.mockImplementation(() => [Date.now() - 100]);
+    useCache.mockImplementation(() => [podcastListMockAfterFormated]);
+    
     const userSearch = jest.fn();
     render(
       <LoaderProvider>

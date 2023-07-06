@@ -4,16 +4,16 @@ import getPodcasts from "../api/getPodcasts";
 import Home from "./Home";
 import Layout from "./Layout";
 import { formatDataList } from "../helpers/formatDatafromApi";
-import useLocalStorage from "../hooks/useLocalStorage";
+import useCache from "../hooks/useCache";
 import { useLoader } from "../contexts/LoadingContext";
 
 
 function App() {
   const [data, setData] = useState([]);
   const [userSearch, setUserSearch] = useState("");
-  const [date, setDate] = useLocalStorage("date", 0);
-  const [podcastData, setPodcastData] = useLocalStorage("podcastData",[]);
-  const [_, setPodcastSelected] = useLocalStorage("podcastSelected", []);
+  const [date, setDate] = useCache("date", 0);
+  const [podcastData, setPodcastData] = useCache("podcastData",[]);
+  const [_, setPodcastSelected] = useCache("podcastSelected", {});
   const { setLoadingState } = useLoader();
   
   const checkIf24hPassedToValidateInfo = (date) => {

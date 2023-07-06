@@ -4,14 +4,14 @@ import styles from "../styles/PodcastDetail.module.sass";
 import { useRouter } from "next/router";
 import sanitizeHtml from "sanitize-html";
 import Layout from "./Layout";
-import useLocalStorage from "../hooks/useLocalStorage";
+import useCache from "../hooks/useCache";
 
 const EpisodeDetail = () => {
   const [episode, setEpisode] = useState({});
   const router = useRouter();
   const { id, trackId } = router.query;
-  const [podcastSelected] = useLocalStorage(`podcast_${id}`, []);
-  const [podcast, setPodcast] = useLocalStorage('podcastSelected', []);
+  const [podcastSelected] = useCache(`podcast_${id}`, []);
+  const [podcast, setPodcast] = useCache('podcastSelected', []);
 
 
   useEffect(() => {
