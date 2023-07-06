@@ -1,7 +1,7 @@
 module.exports = {
-    collectCoverage: true,
+    // collectCoverage: true,
     // on node 14.x coverage provider v8 offers good speed and more or less good report
-    coverageProvider: 'v8',
+    // coverageProvider: 'v8',
     collectCoverageFrom: [
       '**/*.{js,jsx,ts,tsx}',
       '!**/*.d.ts',

@@ -19,7 +19,7 @@ jest.mock("next/router", () => ({
   useRouter: () => ({
     query: {
       trackId: "1000604730376",
-      id: "1535809342",
+      podcastId: "1535809342",
     },
   }),
 }));
