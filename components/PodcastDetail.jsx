@@ -9,7 +9,6 @@ import PodcastCard from "./PodcastCard";
 import useCache from "../hooks/useCache";
 import { useLoader } from "../contexts/LoadingContext";
 import {checkIf24hPassedToValidateInfo} from "../helpers/checkIf24hHasPassed";
-import cacheService from "../api/cacheService";
 
 const PodcastDetail = () => {
   const [podcastToRender, setPodcastToRender] = useState([]);
