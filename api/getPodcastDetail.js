@@ -7,6 +7,6 @@ export default async function getPodcastInfo(id) {
     return data;
   }
   catch(error) {
-    throw new Error("It was an error:", error);
+    console.log(error)
   }
 }

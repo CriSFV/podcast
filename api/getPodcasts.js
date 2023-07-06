@@ -8,6 +8,6 @@ export default async function getPodcasts() {
     return data;
   }
   catch(error) {
-    throw new Error("It was an error:", error);
+    console.log(error)
   };
 }
