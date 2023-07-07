@@ -6,7 +6,7 @@ import Layout from "./Layout";
 import { formatDataList } from "../helpers/formatDatafromApi";
 import useCache from "../hooks/useCache";
 import { useLoader } from "../contexts/LoadingContext";
-import { checkIf24hPassedToValidateInfo } from "../helpers/checkIf24hHasPassed";
+import cacheService from "../api/cacheService";
 
 function App() {
   const [data, setData] = useState([]);
@@ -16,37 +16,31 @@ function App() {
   const { setLoadingState } = useLoader();
 
   useEffect(() => {
-    const hasBeenPassed24Hours = checkIf24hPassedToValidateInfo(
-      podcastData?.date ?? 0
-    );
-    if (hasBeenPassed24Hours) {
+
+    if (podcastData.length === 0) {
       setLoadingState(true);
       const getApiInfo = async () => {
-        window.localStorage.clear();
+        cacheService.clear();
         const response = await getPodcasts();
-        const dataFormatted = {
-          podcastData: formatDataList(response),
-          date: Date.now(),
-        };
-        setData(dataFormatted.podcastData);
+        const dataFormatted = formatDataList(response);
+        setData(dataFormatted);
         setPodcastData(dataFormatted);
         setLoadingState(false);
       };
       getApiInfo();
     } else {
       setLoadingState(false);
-      setData(podcastData.podcastData);
+      setData(podcastData);
     }
   }, [podcastData, setPodcastData, setLoadingState]);
 
-  // recive input value
   const handleSearch = (ev) => {
     setUserSearch(ev);
   };
 
   const handleUserSelect = (ev) => {
     const podcast = data.find((pod) => pod.id === ev);
-    podcast && setPodcastSelected({ podcast, date: Date.now() });
+    podcast && setPodcastSelected(podcast);
   };
 
   const podcastFiltered =

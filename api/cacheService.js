@@ -1,20 +1,41 @@
+import { checkIf24hPassedToValidateInfo } from "../helpers/checkIf24hHasPassed";
 
 const get = (key, defaultValue) => {
-  const localStorageData = localStorage.getItem(key);
-  return localStorageData ? JSON.parse(localStorageData) : defaultValue;
+  try {
+    const localStorageData = localStorage.getItem(key);
+    const moreThan24hHasPassed =
+      checkIf24hPassedToValidateInfo(localStorageData.date);
+    return localStorageData && !moreThan24hHasPassed
+      ? JSON.parse(localStorageData).data
+      : defaultValue;
+  } catch (error) {
+    return defaultValue;
+  }
 };
 
 const set = (key, value) => {
-  const localStorageData = JSON.stringify(value);
-  localStorage.setItem(key, localStorageData);
+  try {
+    const data = {date: Date.now(), data: value}
+    localStorage.setItem(key, JSON.stringify(data));
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const remove = (key) => {
-  localStorage.removeItem(key);
+  try {
+    localStorage.removeItem(key);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const clear = () => {
-  localStorage.clear();
+  try {
+    localStorage.clear();
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-export default {get, set, remove, clear};
+export default { get, set, remove, clear };

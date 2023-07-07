@@ -32,7 +32,7 @@ describe("EpisodeDetail", () => {
         <EpisodeDetail />
       </LoaderProvider>
     );
-    const podcastEpisodeList = screen.getByText(podcastDetailMock.data[1].trackName);
+    const podcastEpisodeList = screen.getByText(podcastDetailMock[1].trackName);
     expect(podcastEpisodeList).toBeInTheDocument();
   });
 });

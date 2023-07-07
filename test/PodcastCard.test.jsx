@@ -20,10 +20,10 @@ describe("PodcastCard", () => {
   it("should render a podcast card", () => {
     render(
       <LoaderProvider>
-        <PodcastCard podcast={podcastSelectedMock.podcast} />
+        <PodcastCard podcast={podcastSelectedMock} />
       </LoaderProvider>
     );
-    const podcastCard = screen.getByText(podcastSelectedMock.podcast.title);
+    const podcastCard = screen.getByText(podcastSelectedMock.title);
     expect(podcastCard).toBeInTheDocument();
   });
 });

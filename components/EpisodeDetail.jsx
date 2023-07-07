@@ -15,7 +15,7 @@ const EpisodeDetail = () => {
 
 
   useEffect(() => {
-    const episodeToRender = podcastSelected?.data?.filter(
+    const episodeToRender = podcastSelected?.filter(
       (x) => x.trackId === parseInt(trackId)
     );
     setEpisode(episodeToRender[0]);
@@ -28,7 +28,7 @@ const EpisodeDetail = () => {
   return (
     <Layout title={"Episode Detail | Podcast"}>
       <div className={styles.podcastDetail__container}>
-        <PodcastCard podcastId={id} podcast={podcast.podcast}/>
+        <PodcastCard podcastId={id} podcast={podcast}/>
         <section className={styles.podcast}>
           <h2>{episode?.trackName}</h2>
           <p id="episodeDescription">

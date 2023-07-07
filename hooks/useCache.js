@@ -1,32 +1,24 @@
-'use client'
+"use client";
 import { useState } from "react";
 import cacheService from "../api/cacheService";
 
 export default function useCache(key, initialValue) {
   const [storedValue, setStoredValue] = useState(() => {
-    try {
-      const item = cacheService.get(key);
-      return item ?? initialValue;
-    } catch (error) {
-      return initialValue;
-    }
+    const item = cacheService.get(key, initialValue);
+    return item;
   });
 
   const setValue = (value) => {
-    try {
-      setStoredValue(value);
-      cacheService.set(key, value);
-    } catch (error) {
-      console.log(error);
-    }
+    setStoredValue(value);
+    cacheService.set(key, value);
   };
 
-  const removeValue = (value) => {
-    try {
-      cacheService.remove(key);
-    } catch (error) {
-      console.log(error);
-    }
+  const removeValue = () => {
+    cacheService.remove(key);
   };
-  return [storedValue, setValue, removeValue];
+
+  const clearCache = () => {
+    cacheService.clear();
+  };
+  return [storedValue, setValue, removeValue, clearCache];
 }

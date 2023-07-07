@@ -1,13 +1,10 @@
 import styles from "../styles/Home.module.sass";
 import List from "./List";
 
-const Home = (props) => {
+const Home = ({handleSearch, handleUserSelect, data}) => {
   const userSearch = (ev) => {
     ev.preventDefault();
-    props.handleSearch(ev.target.value);
-  };
-  const handleUserSelect = (ev) => {
-    props.handleUserSelect(ev);
+    handleSearch(ev.target.value);
   };
   return (
     <>
@@ -16,10 +13,10 @@ const Home = (props) => {
           id="list-counter"
           data-testid="list-counter"
           className={`${
-            props.data.length > 0 ? styles.searcher__results : ""
+            data?.length > 0 ? styles.searcher__results : ""
           } flex_column_center`}
         >
-          {props.data.length > 0 ? props.data.length : ""}
+          {data?.length > 0 ? data?.length : ""}
         </span>
         <form action="">
           <label htmlFor="search" />
@@ -32,7 +29,7 @@ const Home = (props) => {
           />
         </form>
       </section>
-      <List data={props.data} handleUserSelect={handleUserSelect} />
+      <List data={data} handleUserSelect={handleUserSelect} />
     </>
   );
 };
