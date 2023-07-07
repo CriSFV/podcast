@@ -1,5 +1,5 @@
 export const formatDataList = (data) => {
-  const podcasts = data.feed?.entry.map((podcast) => {
+  const podcasts = data?.feed?.entry.map((podcast) => {
     return {
       id: podcast.id.attributes["im:id"],
       title: podcast["im:name"].label,
@@ -12,7 +12,7 @@ export const formatDataList = (data) => {
 };
 
 export const formatPodcastDetail = (data) => {
-  const podcast = data.results?.map((episode) => {
+  const podcast = data?.results?.map((episode) => {
     return {
       id_author: episode.collectionId,
       wrapperType: episode.wrapperType,
